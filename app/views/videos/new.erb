@@ -1,0 +1,31 @@
+<h1>Post a Video</h1>
+<hr/>
+
+<% if @video.errors.any? %>
+  <div>
+    <strong>Some issues with your video, please fix them:</strong>
+    <ul>
+      <% @video.errors.full_videos.each do |video| %>
+        <li><%= video %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form method="post" action="/videos">
+  <div>
+    <label>Author:</label>
+    <input type="text" name="author" value="<%= @video.author %>">
+  </div>
+  <div>
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= @video.title %>">
+  </div>
+  <div>
+    <label>Last URL text of video:</label>
+    <input type="text" name="embed" value="<%= @video.embed %>">
+  </div>
+  <div>
+    <input type="submit" value="Submit" >
+  </div>
+</form>
